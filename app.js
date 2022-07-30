@@ -9,7 +9,6 @@ const savedOperation = document.querySelector("#lastOperationScreen");
 let globalOperator;
 
 //  -- EventListeners
-
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const value = e.target.textContent;
@@ -26,14 +25,10 @@ operationBtn.forEach((button) => {
 });
 
 equal.addEventListener("click", () => {
-  let result = display.textContent;
-  let splitted = result.split(globalOperator);
-  let firstAnswer = operate(splitted[0], globalOperator, splitted[1]);
-  savedOperation.textContent = display.textContent;
-  display.textContent = firstAnswer;
-  if (display.textContent === "NaN") {
-    display.textContent = `Invalid Entry`;
+  if (display.textContent === "") {
+    return;
   }
+  solution();
 });
 
 clear.addEventListener("click", () => {
@@ -42,6 +37,18 @@ clear.addEventListener("click", () => {
 
 deletebtn.addEventListener("click", () => {
   deletelast();
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.code == "Backspace") {
+    deletelast();
+  }
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.code === "Tab") {
+    solution();
+  }
 });
 
 // -- Operations Functions
@@ -81,6 +88,21 @@ const deletelast = () => {
   display.textContent = joinedArray;
 };
 
+const solution = () => {
+  let result = display.textContent;
+  let splitted = result.split(globalOperator);
+  if (splitted[1] === "") {
+    return;
+  }
+  let firstAnswer =
+    Math.round(operate(splitted[0], globalOperator, splitted[1]) * 100) / 100;
+  savedOperation.textContent = display.textContent;
+  display.textContent = firstAnswer;
+  if (display.textContent === "NaN") {
+    display.textContent = `Invalid Entry`;
+  }
+};
+
 // -- Function that triggers the operations
 function operate(a, operator, b) {
   a = Number(a);
@@ -95,8 +117,8 @@ function operate(a, operator, b) {
     case "×":
       return multiply(a, b);
     case "÷":
-      if (b === 0) {
-        return "null";
+      if (b === 0.0) {
+        return "Can not divide by 0";
       } else {
         return divide(a, b);
       }

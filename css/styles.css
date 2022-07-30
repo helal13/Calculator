@@ -84,7 +84,14 @@ button {
   grid-column: span 2;
 }
 
-.btn {
+.btn,
+#clearBtn,
+#deleteBtn,
+.btnDividid,
+.btnMultiply,
+.btnSubtract,
+.btnAdd,
+#equalsBtn {
   padding: 20px;
   border: 2px var(--border) solid;
   border-radius: 5px;
@@ -92,35 +99,51 @@ button {
   font-size: 20px;
 }
 
-.btn:hover {
+.btn:hover,
+.btnDividid:hover,
+.btnMultiply:hover,
+.btnSubtract:hover,
+.btnAdd:hover,
+#equalsBtn:hover {
   background-color: var(--btn-hover);
 }
 
-.btn:active {
+.btn:active,
+.btnDividid:active,
+.btnMultiply:active,
+.btnSubtract:active,
+.btnAdd:active,
+#equalsBtn:active {
   background-color: var(--btn-active);
 }
 
-.btn-red {
+.btn-red,
+#clearBtn {
   background-color: var(--btn-red);
 }
 
-.btn-red:hover {
+.btn-red:hover,
+#clearBtn:hover {
   background-color: var(--btn-red-hover);
 }
 
-.btn-red:active {
+.btn-red:active,
+#clearBtn:active {
   background-color: var(--btn-red-active);
 }
 
-.btn-blue {
+.btn-blue,
+#deleteBtn {
   background-color: var(--btn-blue);
 }
 
-.btn-blue:hover {
+.btn-blue:hover,
+#deleteBtn:hover {
   background-color: var(--btn-blue-hover);
 }
 
-.btn-blue:active {
+.btn-blue:active,
+#deleteBtn:active {
   background-color: var(--btn-blue-active);
 }
 
